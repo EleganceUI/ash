@@ -68,10 +68,14 @@ impl Entry {
                 target_os = "macos",
                 target_os = "ios",
                 target_os = "android",
-                target_os = "fuchsia"
+                target_os = "fuchsia",
+                target_os = "mikros"
             ))
         ))]
         const LIB_PATH: &str = "libvulkan.so.1";
+
+        #[cfg(target_os = "mikros")]
+        const LIB_PATH: &str = "libvulkan.dlib";
 
         #[cfg(any(target_os = "android", target_os = "fuchsia"))]
         const LIB_PATH: &str = "libvulkan.so";
